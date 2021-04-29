@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PizzaBoxClient.Models.Pizza>
+
+@{
+    ViewData["Title"] = "SelectPizza";
+}
+
+<h1>SelectPizza</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.PizzaName)
+            </th>
+            <th>Price</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Crust)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sauce)
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.PizzaName)
+            </td>
+            <td>@{item.getPrice();}</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Crust.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sauce.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Select", "ChoosePizza", new {  id=item.Id   }) |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

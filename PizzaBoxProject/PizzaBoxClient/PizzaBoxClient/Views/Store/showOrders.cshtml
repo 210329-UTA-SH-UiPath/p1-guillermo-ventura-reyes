@@ -1,0 +1,61 @@
+﻿@model IEnumerable<PizzaBoxClient.Models.Order>
+
+@{
+    ViewData["Title"] = "showOrders";
+}
+
+<h1> Order Details </h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                Name
+            </th>
+            
+            <th>
+               Order Description
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            
+            <td>
+                @{
+                    foreach (var detail in item.OrderDetails)
+                    {
+                        <p> Pizza Type: @detail.Pizza.PizzaName</p>
+                        <p> Pizza Crust: @detail.Pizza.Crust.Name</p>
+                        <p> Pizza Sauce: @detail.Pizza.Sauce.Name</p>
+                        foreach (var top in detail.Pizza.Topping)
+                        {
+                            <p>Topping : @top.Name</p>
+                        }
+                        <p> Number of Pizzas: @detail.NumberOfPizzas</p>
+                        <p> Price : @detail.getPrice()</p>
+                    }
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
