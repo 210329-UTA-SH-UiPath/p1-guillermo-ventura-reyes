@@ -17,6 +17,11 @@ namespace PizzaBoxClient.Models
         public int? CrustId { get; set; }
         public int? SauceId { get; set; }
 
+        public Pizza()
+        {
+            Topping = new List<Topping>();
+        }
+
         public virtual Crust Crust { get; set; }
         public virtual Sauce Sauce { get; set; }
         public virtual ICollection<Topping> Topping { get; set; }

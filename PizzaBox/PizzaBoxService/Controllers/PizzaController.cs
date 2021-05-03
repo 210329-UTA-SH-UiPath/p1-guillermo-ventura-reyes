@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using PizzaBox.Storing.Repositories;
 using PizzaBox.Storing.Entities;
+using PizzaBox.Storing.Entities;
+using System.Net.Mime;
 
 namespace PizzaBoxService.Controllers
 {
@@ -48,6 +50,24 @@ namespace PizzaBoxService.Controllers
 
                 return NotFound(ex.Message);
             }
+        }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        //[Consumes("application/json")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        public ActionResult<Pizza> Post(Pizza pizza)
+        {
+            if (pizza == null)
+            {
+                return BadRequest("The Customer you are trying to add is empty");
+            }
+            else
+            {
+                return repo.AddPizza(pizza);
+            }
+
         }
     }
 }

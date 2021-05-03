@@ -18,7 +18,7 @@ namespace PizzaBox.Testing
 
             var sauces = dbContext.Sauces.AsNoTracking().ToList();
             
-            Assert.Equal(sauces.Count(), 4);
+            Assert.Equal(4, sauces.Count);
           
 
         }
@@ -30,7 +30,7 @@ namespace PizzaBox.Testing
 
             var toppings = dbContext.Toppings.AsNoTracking().ToList();
 
-            Assert.Equal(toppings.Count(), 6);
+            Assert.Equal( 6, toppings.Count);
 
 
         }
@@ -42,7 +42,7 @@ namespace PizzaBox.Testing
 
             var stores = dbContext.Stores.AsNoTracking().ToList();
 
-            Assert.Equal(stores.Count(), 3);
+            Assert.Equal( 3, stores.Count);
 
 
         }
@@ -54,7 +54,7 @@ namespace PizzaBox.Testing
 
             var pizzas = dbContext.Pizzas.AsNoTracking().ToList();
 
-            Assert.Equal(pizzas.Count(), 4);
+            Assert.Equal(6,pizzas.Count);
 
 
         }
@@ -66,7 +66,7 @@ namespace PizzaBox.Testing
 
             var orders = dbContext.Orders.AsNoTracking().ToList();
 
-            Assert.Equal(orders.Count(), 6);
+            Assert.Equal(6, orders.Count);
 
 
         }
@@ -78,7 +78,186 @@ namespace PizzaBox.Testing
 
             var customers = dbContext.Customers.AsNoTracking().ToList();
 
-            Assert.Equal(customers.Count(), 6);
+            Assert.Equal( 3, customers.Count);
+
+
+        }
+
+        [Fact]
+        public void customersTest2()
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:guillermo-rev-demo.database.windows.net,1433;Initial Catalog=BoxPizza;Persist Security Info=False;User ID=dev;Password=Mastersw1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var dbContext = new PizzaBox.Storing.Entities.PizzaBoxContext(optionsBuilder.Options);
+
+            var customers = dbContext.Customers.AsNoTracking().ToList();
+
+            Assert.Equal(3, customers.Count);
+
+
+        }
+
+        [Fact]
+        public void storesTest2()
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:guillermo-rev-demo.database.windows.net,1433;Initial Catalog=BoxPizza;Persist Security Info=False;User ID=dev;Password=Mastersw1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var dbContext = new PizzaBox.Storing.Entities.PizzaBoxContext(optionsBuilder.Options);
+
+            var stores = dbContext.Stores.AsNoTracking().ToList();
+
+            Assert.Equal("Giuseppe's", stores[0].Name);
+
+
+        }
+
+        [Fact]
+        public void storesTest3()
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:guillermo-rev-demo.database.windows.net,1433;Initial Catalog=BoxPizza;Persist Security Info=False;User ID=dev;Password=Mastersw1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var dbContext = new PizzaBox.Storing.Entities.PizzaBoxContext(optionsBuilder.Options);
+
+            var stores = dbContext.Stores.AsNoTracking().ToList();
+
+            Assert.Equal("Kibble's", stores[1].Name);
+
+
+        }
+
+        [Fact]
+        public void storesTest4()
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:guillermo-rev-demo.database.windows.net,1433;Initial Catalog=BoxPizza;Persist Security Info=False;User ID=dev;Password=Mastersw1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var dbContext = new PizzaBox.Storing.Entities.PizzaBoxContext(optionsBuilder.Options);
+
+            var stores = dbContext.Stores.AsNoTracking().ToList();
+
+            Assert.Equal("Oval Pizza", stores[2].Name);
+
+
+        }
+
+        [Fact]
+        public void storesTest5()
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:guillermo-rev-demo.database.windows.net,1433;Initial Catalog=BoxPizza;Persist Security Info=False;User ID=dev;Password=Mastersw1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var dbContext = new PizzaBox.Storing.Entities.PizzaBoxContext(optionsBuilder.Options);
+
+            var stores = dbContext.Stores.AsNoTracking().ToList();
+
+            Assert.NotEqual("Square Pizza", stores[2].Name);
+
+
+        }
+
+        [Fact]
+        public void SauceTest2()
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:guillermo-rev-demo.database.windows.net,1433;Initial Catalog=BoxPizza;Persist Security Info=False;User ID=dev;Password=Mastersw1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var dbContext = new PizzaBox.Storing.Entities.PizzaBoxContext(optionsBuilder.Options);
+
+            var sauces = dbContext.Sauces.AsNoTracking().ToList();
+
+            Assert.Equal("Regular", sauces[0].Name);
+
+
+        }
+        [Fact]
+        public void SauceTest3()
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:guillermo-rev-demo.database.windows.net,1433;Initial Catalog=BoxPizza;Persist Security Info=False;User ID=dev;Password=Mastersw1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var dbContext = new PizzaBox.Storing.Entities.PizzaBoxContext(optionsBuilder.Options);
+
+            var sauces = dbContext.Sauces.AsNoTracking().ToList();
+
+            Assert.NotEqual("Not Regular", sauces[0].Name);
+
+
+        }
+        [Fact]
+        public void SauceTest4()
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:guillermo-rev-demo.database.windows.net,1433;Initial Catalog=BoxPizza;Persist Security Info=False;User ID=dev;Password=Mastersw1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var dbContext = new PizzaBox.Storing.Entities.PizzaBoxContext(optionsBuilder.Options);
+
+            var sauces = dbContext.Sauces.AsNoTracking().ToList();
+
+            Assert.Equal("Spicy", sauces[1].Name);
+
+
+        }
+        [Fact]
+        public void SauceTest5()
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:guillermo-rev-demo.database.windows.net,1433;Initial Catalog=BoxPizza;Persist Security Info=False;User ID=dev;Password=Mastersw1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var dbContext = new PizzaBox.Storing.Entities.PizzaBoxContext(optionsBuilder.Options);
+
+            var sauces = dbContext.Sauces.AsNoTracking().ToList();
+
+            Assert.Equal("Garlic", sauces[2].Name);
+
+
+        }
+
+        [Fact]
+        public void SauceTest6()
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:guillermo-rev-demo.database.windows.net,1433;Initial Catalog=BoxPizza;Persist Security Info=False;User ID=dev;Password=Mastersw1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var dbContext = new PizzaBox.Storing.Entities.PizzaBoxContext(optionsBuilder.Options);
+
+            var sauces = dbContext.Sauces.AsNoTracking().ToList();
+
+            Assert.Equal("Squid Ink", sauces[3].Name);
+
+
+        }
+
+        [Fact]
+        public void SauceTest7()
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:guillermo-rev-demo.database.windows.net,1433;Initial Catalog=BoxPizza;Persist Security Info=False;User ID=dev;Password=Mastersw1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var dbContext = new PizzaBox.Storing.Entities.PizzaBoxContext(optionsBuilder.Options);
+
+            var sauces = dbContext.Sauces.AsNoTracking().ToList();
+
+            Assert.NotEqual("squid ink", sauces[3].Name);
+
+
+        }
+
+        [Fact]
+        public void CrustTest()
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:guillermo-rev-demo.database.windows.net,1433;Initial Catalog=BoxPizza;Persist Security Info=False;User ID=dev;Password=Mastersw1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var dbContext = new PizzaBox.Storing.Entities.PizzaBoxContext(optionsBuilder.Options);
+
+            var crusts = dbContext.Crusts.AsNoTracking().ToList();
+
+            Assert.Equal(4, crusts.Count);
+
+
+        }
+
+        [Fact]
+        public void CrustTest2()
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:guillermo-rev-demo.database.windows.net,1433;Initial Catalog=BoxPizza;Persist Security Info=False;User ID=dev;Password=Mastersw1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var dbContext = new PizzaBox.Storing.Entities.PizzaBoxContext(optionsBuilder.Options);
+
+            var crusts = dbContext.Crusts.AsNoTracking().ToList();
+
+            Assert.Equal("Thin", crusts[0].Name);
+
+
+        }
+
+        [Fact]
+        public void CrustTest3()
+        {
+            optionsBuilder.UseSqlServer("Server=tcp:guillermo-rev-demo.database.windows.net,1433;Initial Catalog=BoxPizza;Persist Security Info=False;User ID=dev;Password=Mastersw1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            var dbContext = new PizzaBox.Storing.Entities.PizzaBoxContext(optionsBuilder.Options);
+
+            var crusts = dbContext.Crusts.AsNoTracking().ToList();
+
+            Assert.Equal("Stuffed", crusts[2].Name);
 
 
         }

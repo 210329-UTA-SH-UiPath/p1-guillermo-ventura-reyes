@@ -25,6 +25,24 @@ namespace PizzaBox.Storing.Repositories
             context.SaveChanges();
         }
 
+        public Pizza AddPizza(Pizza pizza)
+        {
+            pizza.Sauce = null;
+            pizza.Crust = null;
+            var tempToppings = pizza.Topping;
+            pizza.Topping = new List<Topping>();
+
+            foreach (var topping in tempToppings)
+            {
+                pizza.Topping.Add(getToppingById(topping.Id));
+            }
+
+            context.Add(pizza);
+            context.SaveChanges();
+
+            return pizza;
+        }
+
         public void DeleteCustomer(Customer customer)
         {
             var CustomerToDelete = context.Customers.Find(customer.Id);
@@ -101,7 +119,7 @@ namespace PizzaBox.Storing.Repositories
 
         public Topping getToppingById(int id)
         {
-            var topping = context.Toppings.AsNoTracking().Where(x => x.Id == id).FirstOrDefault();
+            var topping = context.Toppings.Where(x => x.Id == id).FirstOrDefault();
 
             if (topping != null)
             {
@@ -183,6 +201,7 @@ namespace PizzaBox.Storing.Repositories
             temp.Date = order.Date;
             temp.StoreId = order.StoreId;
             temp.CustomerId = order.CustomerId;
+            temp.Customer = null;
             
             context.Update(temp);
             context.SaveChanges();

@@ -31,12 +31,38 @@ namespace PizzaBoxClient.Controllers
             {
                 order = new Models.Order();
             }
+            
             return order;
+        }
+
+        public static Models.Pizza GetCustomPizza(ISession session)
+        {
+            var pizza = GetObjectFromJson<Models.Pizza>(session, "pizza");
+            if (pizza is null)
+            {
+                pizza = new Models.Pizza();
+            }
+            return pizza;
+        }
+
+        public static void SavePizza(ISession session, Models.Pizza pizza)
+        {
+            SetObjectAsJson(session, "pizza", pizza);
+        }
+
+        public static void ClearPizza(ISession session)
+        {
+            SetObjectAsJson(session, "pizza", new Models.Pizza());
         }
 
         public static void SaveOrder(ISession session, Models.Order order)
         {
             SetObjectAsJson(session, "order", order);
+        }
+
+        public static void Clear(ISession session)
+        {
+            session.Clear();
         }
     }
 }

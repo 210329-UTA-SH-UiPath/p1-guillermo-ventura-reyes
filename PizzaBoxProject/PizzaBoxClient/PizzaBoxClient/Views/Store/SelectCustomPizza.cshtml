@@ -1,0 +1,80 @@
+﻿@model IEnumerable<PizzaBoxClient.Models.Pizza>
+
+@{
+    ViewData["Title"] = "SelectCustomPizza";
+}
+
+<h1>SelectCustomPizza</h1>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <label class="text-danger">
+        @ViewBag.ErrorMessage
+    </label>
+}
+
+<p>
+    <a asp-action="SubmitCustomOrder">Submit Order</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Crust
+            </th>
+            <th>
+                Sauce
+            </th>
+            <th>
+                Toppings
+            </th>
+
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @if (item.Crust != null)
+                    {
+
+                        @Html.DisplayFor(modelItem => item.Crust.Name)
+                    }
+
+                </td>
+                <td>
+                    @if (item.Sauce != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Sauce.Name)
+                    }
+
+                </td>
+
+                <td>
+                    @if (item.Topping != null)
+                    {
+                        {
+                            foreach (var topping in item.Topping)
+                            {
+                                <p> @topping.Name | @topping.Price</p>
+                            }
+                        }
+
+                    }
+
+                </td>
+                <td>
+                    <p><a asp-action="AddCustomCrust">Add Crust</a></p>
+                    <p><a asp-action="AddCustomSauce">Add Sauce</a></p>
+                    <p><a asp-action="AddCustomTopping">Add Topping</a></p>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

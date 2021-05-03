@@ -35,9 +35,10 @@
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
             <td>
-                
-                @Html.ActionLink("Order Pizza", "SelectPizza", new { id = item.Id }) 
-               
+
+                @Html.ActionLink("Order Preset Pizza", "SelectPizza", new { id = item.Id })
+                @Html.ActionLink("Order Custom Pizza", "SelectCustomPizza", new { id = item.Id })
+
             </td>
         </tr>
 }

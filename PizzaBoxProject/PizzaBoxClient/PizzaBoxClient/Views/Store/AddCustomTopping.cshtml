@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PizzaBoxClient.Models.Topping>
+
+@{
+    ViewData["Title"] = "AddCustomTopping";
+}
+
+<h1>Select topping</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            
+            <td>
+                @Html.ActionLink("Select", "AddToppingToPizza", new { item.Id }) |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

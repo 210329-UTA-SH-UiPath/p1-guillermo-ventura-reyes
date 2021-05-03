@@ -1,6 +1,8 @@
 ﻿@model PizzaBoxClient.Models.IntHolderView
 
-
+@{
+    ViewData["Title"] = "SelectNumCustomPizza";
+}
 
 <h1>Select Number of pizzas</h1>
 @if (ViewBag.PresetTotalError != null)
@@ -10,11 +12,10 @@
     </label>
 }
 
-<h4>Select amount of Pizzas</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="PostOrder">
+        <form asp-action="PostCustomOrder">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="numPizzas" class="control-label"></label>
