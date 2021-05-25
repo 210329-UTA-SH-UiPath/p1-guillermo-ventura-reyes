@@ -34,4 +34,7 @@ Create a Database and provide connection string.
 
 Run PizzaBox in order to run Web API, then Run Client to run user client.
 
+## License
+
+This project uses the following license: [The MIT License](https://opensource.org/licenses/MIT).
 
